@@ -19,24 +19,40 @@ class MessagePage {
     }
 
     static #renderGallery() {
+        const fragment = document.createDocumentFragment();
 
-        INDIVIDUAL_PHOTO_NAMES.forEach(name => {
-            const src = `messages/${name}.png`;
-            const img = `
-                <img src="${src}" class="gallery-img"
-                    data-bs-toggle="modal" data-bs-target="#lightboxModal"
-                    data-bs-img="${src}">
-            `;
-            MessagePage.#galleryRow.innerHTML += img;
-        });
+        for (const [photoType, fileNames] of Object.entries(photos)) {
+            const isGroupPhoto = photoType === "group";
 
-        const src = `messages/${GROUP_PHOTO_NAME}.png`;
-        const img = `
-            <img src="${src}" class="gallery-img featured"
-                data-bs-toggle="modal" data-bs-target="#lightboxModal"
-                data-bs-img="${src}">
-        `;
-        MessagePage.#galleryRow.innerHTML += img;
+            fileNames.forEach(fileName => {
+                const img = this.#createImage(fileName, isGroupPhoto);
+                fragment.appendChild(img);
+            });
+        }
+
+        MessagePage.#galleryRow.appendChild(fragment);
+    }
+
+    /**
+     * @param {string} fileName
+     * @param {boolean} isGroupPhoto
+     * @returns {HTMLImageElement}
+     */
+    static #createImage(fileName, isGroupPhoto) {
+        const img = document.createElement("img");
+        const src = `images/${fileName}`;
+
+        img.src = src;
+        img.classList.add("gallery-img");
+        img.dataset.bsToggle = "modal";
+        img.dataset.bsTarget = "#lightboxModal";
+        img.dataset[MessagePage.#DATA_IMG] = src;
+
+        if (isGroupPhoto) {
+            img.classList.add("featured");
+        }
+
+        return img;
     }
 
     static #setupLightbox() {
