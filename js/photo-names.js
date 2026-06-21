@@ -8,5 +8,5 @@ const photos = {
         'OMEGA11_VRC.png', 'pachikoma_vr.png', 'sora_chamo.jpg', 'sukka65536.png',
         'tanaca_8.png', 'tugu5757.jpg', 'vryoituki4183.png', 'Yuri3Haruku3.png'
     ],
-    group: ['_group.png']
+    group: ['group.png']
 }
