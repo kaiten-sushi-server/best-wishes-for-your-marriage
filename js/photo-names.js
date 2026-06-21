@@ -2,11 +2,11 @@
 
 const photos = {
     individual: [
-        'amaneko.png', 'babbaba.png', 'donki.png', 'donutsman.png',
-        'hajime.png', 'kooma.png', 'kotobukimo.png', 'kurosu.png',
-        'miku.png', 'minemine.jpg', 'mochimochi.png', 'pachicoma.png',
-        'rion.png', 'shika.png', 'sorachamo.jpg', 'sukka.png',
-        'tanaca.png', 'unitsugumi.jpg', 'yoituki.png', 'zeid.png'
+        'amaneko', 'babbaba', 'donki', 'donutsman',
+        'hajime', 'kooma', 'kotobukimo', 'kurosu',
+        'miku', 'minemine', 'mochimochi', 'pachicoma',
+        'rion', 'shika', 'sorachamo', 'sukka',
+        'tanaca', 'unitsugumi', 'yoituki', 'zeid'
     ],
-    group: ['group.png']
+    group: ['group']
 }
