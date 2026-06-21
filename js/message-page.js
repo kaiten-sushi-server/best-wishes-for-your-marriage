@@ -40,7 +40,7 @@ class MessagePage {
      */
     static #createImage(fileName, isGroupPhoto) {
         const img = document.createElement("img");
-        const src = `images/${fileName}`;
+        const src = `images/avif/${fileName}.avif`;
 
         img.src = src;
         img.classList.add("gallery-img");
