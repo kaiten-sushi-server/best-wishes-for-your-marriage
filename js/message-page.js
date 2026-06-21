@@ -21,11 +21,11 @@ class MessagePage {
     static #renderGallery() {
         const fragment = document.createDocumentFragment();
 
-        for (const [photoType, fileNames] of Object.entries(photos)) {
+        for (const [photoType, photoNames] of Object.entries(photos)) {
             const isGroupPhoto = photoType === "group";
 
-            fileNames.forEach(fileName => {
-                const img = this.#createImage(fileName, isGroupPhoto);
+            photoNames.forEach(photoName => {
+                const img = this.#createImage(photoName, isGroupPhoto);
                 fragment.appendChild(img);
             });
         }
@@ -34,14 +34,16 @@ class MessagePage {
     }
 
     /**
-     * @param {string} fileName
+     * @param {string} photoName
      * @param {boolean} isGroupPhoto
      * @returns {HTMLImageElement}
      */
-    static #createImage(fileName, isGroupPhoto) {
+    static #createImage(photoName, isGroupPhoto) {
         const img = document.createElement("img");
-        const src = `images/avif/${fileName}.avif`;
+        const src = `images/avif/${photoName}.avif`;
 
+        img.loading = "lazy";
+        img.decoding = "async";
         img.src = src;
         img.classList.add("gallery-img");
         img.dataset.bsToggle = "modal";
